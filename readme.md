@@ -1,6 +1,6 @@
 # API NODE MYSQL
 
-Uma api feita com node e mysql, para o teste de uma vaga frontend da Mount's
+Uma api feita com node e mysql, para o teste de uma vaga frontend da Mout's
 
 ## Requisitos minimos
 

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = process.env.PORT || 8080;
+const port = 8080;
 const mysql = require("mysql");
 const { env } = require("../credentials/config");
 
