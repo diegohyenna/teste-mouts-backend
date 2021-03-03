@@ -2,7 +2,7 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "é uma api feita com node + mysql",
-  "main": "src/app/index.js",
+  "main": "index.js",
   "scripts": {
     "start": "node src/app/index.js",
     "dev": "nodemon src/app/index.js"
