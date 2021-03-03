@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8081;
 const mysql = require("mysql");
-const { env } = require("./src/credentials/config");
+const { env } = require("../credentials/config");
 const app = express();
 
 const cors = require("cors");
