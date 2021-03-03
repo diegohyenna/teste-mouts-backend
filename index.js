@@ -229,9 +229,6 @@ router.delete("/cidades/:id", (req, res) => {
 // router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
 
 app.use("/", router);
-app.use("/estados", router);
-app.use("/prefeitos", router);
-app.use("/cidades", router);
 
 //inicia o servidor
 app.listen(port, () => {
