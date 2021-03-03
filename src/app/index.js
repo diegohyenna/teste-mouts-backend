@@ -13,8 +13,6 @@ router.get("/", (req, res) =>
   res.json({ message: "API para o teste da Mount's" })
 );
 
-app.use("/", router);
-
 //ESTADOS
 router.get("/estados", (req, res) => {
   execSQLQuery("SELECT * FROM ufs", res, true);
@@ -225,6 +223,8 @@ router.delete("/cidades/:id", (req, res) => {
 
 //tratamento de rota nao existente
 router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
+
+app.use("/", router);
 
 //inicia o servidor
 app.listen(port);

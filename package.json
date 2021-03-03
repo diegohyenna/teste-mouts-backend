@@ -1,7 +1,7 @@
 {
   "name": "backend",
   "version": "1.0.0",
-  "description": "é uma api feita com node + mysql",
+  "description": "é uma api feita com node + mysql para o teste da vaga da mout's",
   "main": "index.js",
   "scripts": {
     "start": "node src/app/index.js",
