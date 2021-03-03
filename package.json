@@ -4,8 +4,8 @@
   "description": "é uma api feita com node + mysql para o teste da vaga da mout's",
   "main": "index.js",
   "scripts": {
-    "start": "node src/app/index.js",
-    "dev": "nodemon src/app/index.js"
+    "start": "node index.js",
+    "dev": "nodemon index.js"
   },
   "author": "diegohyenna",
   "license": "ISC",
