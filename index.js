@@ -3,7 +3,7 @@ const app = express();
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8081;
 const mysql = require("mysql");
-const { env } = require("../credentials/config");
+const { env } = require("./src/credentials/config");
 
 const cors = require("cors");
 app.use(cors());
@@ -230,8 +230,8 @@ router.delete("/cidades/:id", (req, res) => {
 app.use("", router);
 
 //inicia o servidor
-app.listen(port, (err) => {
-  console.log(err);
+app.listen(port, () => {
+  console.log("Servidor rodando!!!");
 });
 
 function execSQLQuery(sqlQry, res, select = false) {
