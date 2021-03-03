@@ -1,9 +1,9 @@
 const express = require("express");
-const app = express();
 const bodyParser = require("body-parser");
 const port = process.env.PORT || 8081;
 const mysql = require("mysql");
 const { env } = require("./src/credentials/config");
+const app = express();
 
 const cors = require("cors");
 app.use(cors());
@@ -12,6 +12,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const router = express.Router();
+
 router.get("/", (req, res) =>
   res.json({ message: "API para o teste da Mount's" })
 );
@@ -227,7 +228,10 @@ router.delete("/cidades/:id", (req, res) => {
 //tratamento de rota nao existente
 // router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
 
-app.use("", router);
+app.use("/", router);
+app.use("/estados", router);
+app.use("/prefeitos", router);
+app.use("/cidades", router);
 
 //inicia o servidor
 app.listen(port, () => {
