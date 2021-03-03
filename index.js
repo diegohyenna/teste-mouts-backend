@@ -246,25 +246,26 @@ function execSQLQuery(sqlQry, res, select = false) {
 
   connection.connect(function (err) {
     if (err) {
-      console.log(err);
-      return;
+      return res.json(err);
     }
-    console.log("connected as id " + connection.threadId);
   });
 
   connection.query(sqlQry, function (error, results) {
     if (error) {
-      res.json({ error: true, details: error });
+      connection.end();
+      return res.json({ error: true, details: error });
     } else {
-      (!select &&
-        res.json({
-          id: results.insertId,
-          affectedRows: results.affectedRows,
-          changedRows: results.changedRows,
-          error: false,
-        })) ||
-        res.json(results);
+      connection.end();
+      return (
+        (!select &&
+          res.json({
+            id: results.insertId,
+            affectedRows: results.affectedRows,
+            changedRows: results.changedRows,
+            error: false,
+          })) ||
+        res.json(results)
+      );
     }
-    connection.end();
   });
 }
