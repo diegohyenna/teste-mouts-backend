@@ -12,9 +12,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 const router = express.Router();
-router.get("/", (req, res) =>
-  res.json({ message: "API para o teste da Mount's" })
-);
+// router.get("/", (req, res) =>
+//   res.json({ message: "API para o teste da Mount's" })
+// );
 
 //ESTADOS
 router.get("/estados", (req, res) => {
@@ -225,7 +225,7 @@ router.delete("/cidades/:id", (req, res) => {
 });
 
 //tratamento de rota nao existente
-router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
+// router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
 
 app.use("/", router);
 
