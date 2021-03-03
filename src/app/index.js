@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const port = 3000;
+const port = process.env.PORT || 8081;
 const mysql = require("mysql");
 const { env } = require("../credentials/config");
 
@@ -225,12 +225,14 @@ router.delete("/cidades/:id", (req, res) => {
 });
 
 //tratamento de rota nao existente
-router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
+// router.get("*", (req, res) => res.json({ message: "Essa rota não existe!" }));
 
-app.use("/", router);
+app.use("", router);
 
 //inicia o servidor
-app.listen(port);
+app.listen(port, (err) => {
+  console.log(err);
+});
 
 function execSQLQuery(sqlQry, res, select = false) {
   const connection = mysql.createConnection({
