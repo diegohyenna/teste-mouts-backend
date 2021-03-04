@@ -6,7 +6,7 @@ const { env } = require("../credentials/config");
 const app = express();
 
 const cors = require("cors");
-app.use(cors());
+app.use(cors({ origin: "*", methods: ["GET", "POST", "PUT", "DELETE"] }));
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
