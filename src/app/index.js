@@ -147,7 +147,11 @@ router.delete("/prefeitos/:id", (req, res) => {
 
 //CIDADES
 router.get("/cidades", (req, res) => {
-  execSQLQuery("SELECT * FROM cidades", res, true);
+  execSQLQuery(
+    "SELECT * FROM cidades INNER JOIN ufs ON cidades.UF_ID = ufs.UF_ID LEFT JOIN prefeitos ON prefeitos.PRE_ID = cidades.PRE_ID",
+    res,
+    true
+  );
 });
 
 router.get("/cidades/:id", (req, res) => {
