@@ -61,8 +61,8 @@ router.put("/estados/:id", (req, res) => {
 
   if (!id) return res.json({ error: "falta o parametro de entrada 'id'" });
 
-  name = name ? `UF_NOME='${name}' ` : "";
-  sigla = sigla ? `UF_SIGLA='${sigla}' ` : "";
+  name = name ? `UF_NOME='${name}', ` : "";
+  sigla = sigla ? `UF_SIGLA='${sigla}', ` : "";
 
   let columns = name || sigla ? name + sigla : "";
 
@@ -71,7 +71,13 @@ router.put("/estados/:id", (req, res) => {
       error: "você não informou os campos que devem sofrer alteração!'",
     });
   } else {
-    execSQLQuery(`UPDATE ufs SET ${columns} WHERE UF_ID = ${id}`, res);
+    execSQLQuery(
+      `UPDATE ufs SET ${columns.substr(
+        0,
+        columns.lastIndexOf(",")
+      )}} WHERE UF_ID = ${id}`,
+      res
+    );
   }
 });
 
