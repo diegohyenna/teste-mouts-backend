@@ -75,7 +75,7 @@ router.put("/estados/:id", (req, res) => {
       `UPDATE ufs SET ${columns.substr(
         0,
         columns.lastIndexOf(",")
-      )}} WHERE UF_ID = ${id}`,
+      )} WHERE UF_ID = ${id}`,
       res
     );
   }
