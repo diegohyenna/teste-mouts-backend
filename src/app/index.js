@@ -157,7 +157,12 @@ router.get("/cidades/:id", (req, res) => {
       error: "Tipo de parametro errado, deve ser um inteiro!",
     });
   let filter = " WHERE CID_ID=" + parseInt(id);
-  execSQLQuery("SELECT * FROM cidades" + filter, res, true);
+  execSQLQuery(
+    "SELECT * FROM cidades INNER JOIN ufs ON cidades.UF_ID = ufs.UF_ID LEFT JOIN prefeitos ON prefeitos.PRE_ID = cidades.PRE_ID" +
+      filter,
+    res,
+    true
+  );
 });
 
 router.post("/cidade-por-nome", (req, res) => {
@@ -165,7 +170,12 @@ router.post("/cidade-por-nome", (req, res) => {
   let filter = "";
   if (!name) return res.json({ error: "falta o parametro de entrada 'nome'" });
   filter = " WHERE CID_NOME LIKE '%" + name + "%'";
-  execSQLQuery("SELECT * FROM cidades" + filter, res, true);
+  execSQLQuery(
+    "SELECT * FROM cidades INNER JOIN ufs ON cidades.UF_ID = ufs.UF_ID LEFT JOIN prefeitos ON prefeitos.PRE_ID = cidades.PRE_ID" +
+      filter,
+    res,
+    true
+  );
 });
 
 router.post("/cidades", (req, res) => {
