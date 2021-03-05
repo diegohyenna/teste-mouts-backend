@@ -198,7 +198,7 @@ router.post("/cidades", (req, res) => {
   if (!uf) return res.json({ error: "falta o parametro de entrada 'uf'" });
 
   execSQLQuery(
-    `INSERT INTO cidades(CID_NOME, UF_ID, CID_POPULACAO, PRE_ID) VALUES('${name}','${uf}','${mayor}','${population}')`,
+    `INSERT INTO cidades(CID_NOME, UF_ID, CID_POPULACAO, PRE_ID) VALUES('${name}','${uf}','${population}','${mayor}')`,
     res
   );
 });
